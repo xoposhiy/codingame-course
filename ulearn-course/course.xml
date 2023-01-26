@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<course xmlns="https://ulearn.me/schema/v2" title="Программирование ботов для игр">
+  <enableCodeReviewAndQuizManualCheckForEveryone>false</enableCodeReviewAndQuizManualCheckForEveryone>
+  <dictionaryFile>dictionary.txt</dictionaryFile>
+  <defaultLanguage>python</defaultLanguage>
+  <units>
+    <add>*/unit.xml</add>
+  </units>
+  <scoring defaultQuiz="quiz" defaultExercise="code" default="code">
+    <group id="quiz" abbr="Т" maxAdditionalScore="10">Тесты на закрепление</group>
+    <group id="code" abbr="П" maxAdditionalScore="20">Задачи на программирование</group>
+  </scoring>
+</course>
