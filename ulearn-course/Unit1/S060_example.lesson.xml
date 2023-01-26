@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml-model href="../ulearn.xsd"?>
 <slide.exercise xmlns="https://ulearn.me/schema/v2" title="Задача exercise.file" id="90BCB61E-57F0-4BAA-8BC9-10C9CFD27F59">
   <scoring group="code" passedTestsScore="50" codeReviewScore="0"/>
   <defaultIncludeCodeFile>_FirstStep.cs</defaultIncludeCodeFile>

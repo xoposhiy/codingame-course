@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml-model href="../ulearn.xsd"?>
 <slide xmlns="https://ulearn.me/schema/v2" title="Код" id="C1DA3BA7256142D58F245CCEF2B176A0">
   <defaultIncludeCodeFile>_Code.cs</defaultIncludeCodeFile>
   <markdown>###Весь файл</markdown>

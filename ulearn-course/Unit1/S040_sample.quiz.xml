@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml-model href="../ulearn.xsd"?>
 <slide.quiz xmlns="https://ulearn.me/schema/v2" title="Пример теста" id="41138C54848F4F49856BB738B7E39D28">
   <scoring tries="3" group="quiz"/>
   <question.text id="fillInQuestion" explanation="Описание правильного ответа" maxScore="2" multiline="true">

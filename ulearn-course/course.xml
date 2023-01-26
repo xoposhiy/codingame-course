@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml-model href="../ulearn.xsd"?>
 <course xmlns="https://ulearn.me/schema/v2" title="Программирование ботов для игр">
   <enableCodeReviewAndQuizManualCheckForEveryone>false</enableCodeReviewAndQuizManualCheckForEveryone>
   <dictionaryFile>dictionary.txt</dictionaryFile>

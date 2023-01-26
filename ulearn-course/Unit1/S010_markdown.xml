@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml-model href="../ulearn.xsd"?>
 <slide xmlns="https://ulearn.me/schema/v2" title="Урок" id="db5d4ac8-a9b0-4a36-8d94-cbc1d09950ae">
   <markdown xml:space="preserve">
 Можно использовать TeX: $\Theta(n)$

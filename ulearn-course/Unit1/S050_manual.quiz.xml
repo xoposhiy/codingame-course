@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml-model href="../ulearn.xsd"?>
 <slide.quiz xmlns="https://ulearn.me/schema/v2" title="Пример теста с ручной проверкой" id="41138C54848F4F49856BB738B7E39D29">
   <scoring manualCheck="true"/>
   <question.text id="123" explanation="одна или более цифр" maxScore="5">
