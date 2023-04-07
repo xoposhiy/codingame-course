@@ -3,38 +3,51 @@ import math
 from state import State, Move
 from PyQt5.QtWidgets import QWidget, QPushButton, QApplication
 from PyQt5.QtGui import QPainter, QPen
-from PyQt5.QtCore import Qt
-
-from PyQt5.QtCore import QCoreApplication
+from PyQt5.QtCore import Qt, QTimer
 
 NormScale = 8
+
 
 def Normalize(value: int):
     return value // NormScale
 
 
 class Visualizer(QWidget):
-
     checkPointRadius = 600
 
-    def __init__(self, viz_state: State):#, next_move_func):
+    def __init__(self, viz_state: State, next_move_func):
         super().__init__()
-
-        qbtn = QPushButton('Quit', self)
-        qbtn.clicked.connect(QCoreApplication.instance().quit)
+        next_move_btn = QPushButton('Next move', self)
+        next_move_btn.clicked.connect(self.drawNextMove)
+        play_game_btn = QPushButton('Play game', self)
+        play_game_btn.clicked.connect(self.drawAllGame)
+        play_game_btn.move(0, 70)
 
         # self.setGeometry(50,50, 5000, 2000)
         # x = self.width()
         # y = self.height()
         self.showMaximized()
+
+        #посмотреть зум контрол
         # x = self.width()
         # y = self.height()
         self.State = viz_state
-        # self.next_move_func = next_move_func
-        # self.Moves =
+        self.next_move_func = next_move_func
+        self.picktimer = QTimer()
 
-    # def getNextState(self):
-    #     # self.State.next_moves = [self.next_move_func(self.State.next_checkpoint())]
+    def drawAllGame(self):
+        self.picktimer.setInterval(100)
+        self.picktimer.timeout.connect(self.drawNextMove)
+        self.picktimer.start()
+        QTimer.singleShot(5000, self.stopDrawing)
+
+    def stopDrawing(self):
+        self.picktimer.stop()
+
+    def drawNextMove(self):
+        self.State.next_moves = [self.next_move_func(self.State.next_checkpoint())]
+        self.State.simulate()
+        self.update()
 
     def paintEvent(self, e):
         self.drawState()

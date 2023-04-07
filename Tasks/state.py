@@ -8,10 +8,6 @@ def norm_angle(a):
         a -= 360  # -180..180
     return a
 
-def parse_move(line: str):
-    f = line.split(" ")
-    return Move(int(f[0]), int(f[1]), int(f[2]))
-
 class Move:
     def __init__(self, x, y, thrust, message=""):
         self.x, self.y, self.thrust, self.message = x, y, thrust, message

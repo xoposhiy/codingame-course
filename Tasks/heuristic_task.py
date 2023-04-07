@@ -1,9 +1,15 @@
 import math
+from state import Move
 
+
+# def heuristic(checkpoints):
+#     """На полном ходу летим к следующему флагу"""
+#     return f"{checkpoints[0]} {checkpoints[1]} 200"
 
 def heuristic(checkpoints):
     """На полном ходу летим к следующему флагу"""
-    return f"{checkpoints[0]} {checkpoints[1]} 200"
+    return Move(checkpoints[0], checkpoints[1], 200)
+
 
 # def heuristic2(checkpoint, x, y, angle):
 #     """
