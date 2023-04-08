@@ -1,0 +1,17 @@
+<?xml-model href="../ulearn.xsd"?>
+<slide.exercise id="ce8d0185-5ee3-4b61-9d6b-ec81de09513e" title="Первая задача" xmlns="https://ulearn.me/schema/v2">
+  <scoring group="code" passedTestsScore="2"/>
+  <markdown>
+    Гонщик на эвристиках
+  </markdown>
+  <exercise.universal exerciseDirName="Heuristic" noStudentZip="true">
+    <checkForPlagiarism>false</checkForPlagiarism>
+    <hideSolutions>true</hideSolutions>
+    <hideExpectedOutput>true</hideExpectedOutput>
+    <userCodeFile>heuristic.py</userCodeFile>
+    <includePathForChecker>../TestsRunner</includePathForChecker>
+    <dockerImageName>algorithms-sandbox</dockerImageName>
+    <run>node docker-test-runner.js</run>
+    <region>Task</region>
+  </exercise.universal>
+</slide.exercise>
