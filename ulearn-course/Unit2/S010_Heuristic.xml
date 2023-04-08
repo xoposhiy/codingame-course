@@ -11,7 +11,7 @@
     <userCodeFile>heuristic.py</userCodeFile>
     <includePathForChecker>../TestsRunner</includePathForChecker>
     <dockerImageName>algorithms-sandbox</dockerImageName>
-    <run>node docker-test-runner.js</run>
+    <run>runner.sh</run>
     <region>Task</region>
   </exercise.universal>
 </slide.exercise>
