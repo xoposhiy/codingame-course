@@ -15,7 +15,7 @@
   <exercise.universal exerciseDirName="sum" noStudentZip="true">
     <checkForPlagiarism>false</checkForPlagiarism>
     <hideSolutions>true</hideSolutions>
-    <hideExpectedOutput>true</hideExpectedOutput>
+    <hideExpectedOutput>false</hideExpectedOutput>
     <userCodeFile>sum.js</userCodeFile>
     <includePathForChecker>../TestsRunner</includePathForChecker>
     <dockerImageName>js-sandbox</dockerImageName>

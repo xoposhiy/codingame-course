@@ -63,10 +63,10 @@ class Visualizer(QWidget):
     def drawNextMove(self):
         self.prev_state_btn.setDisabled(False)
 
-        if self.state.next_state is not None:
-            self.state = self.state.next_state
-            self.update()
-            return
+        # if self.state.next_state is not None:
+        #     self.state = self.state.next_state
+        #     self.update()
+        #     return
 
         if self.is_simulation_mode:
             self.state.next_moves = self.next_move_func(StudentState(

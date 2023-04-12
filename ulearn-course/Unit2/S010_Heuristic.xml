@@ -9,7 +9,7 @@
     <hideSolutions>true</hideSolutions>
     <hideExpectedOutput>true</hideExpectedOutput>
     <userCodeFile>heuristic.py</userCodeFile>
-    <includePathForChecker>../TestsRunner</includePathForChecker>
+    <includePathForChecker>Heuristic</includePathForChecker>
     <dockerImageName>algorithms-sandbox</dockerImageName>
     <run>runner.sh</run>
     <region>Task</region>

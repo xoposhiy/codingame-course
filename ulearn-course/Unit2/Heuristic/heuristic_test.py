@@ -1,7 +1,7 @@
 import sys
 import pytest
 import unittest
-from heuristic_initial import *
+from heuristic import *
 from state import State
 
 from PyQt5.QtWidgets import QApplication
