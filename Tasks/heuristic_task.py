@@ -1,30 +1,29 @@
 import math
-from state import Move
+from norm_angle_task import norm_angle
 
 
-# def heuristic(checkpoints):
-#     """На полном ходу летим к следующему флагу"""
-#     return f"{checkpoints[0]} {checkpoints[1]} 200"
-
-def heuristic(checkpoints):
+def heuristic(checkpoint):
     """На полном ходу летим к следующему флагу"""
-    return Move(checkpoints[0], checkpoints[1], 200)
+    # return Move(checkpoint[0], checkpoint[1], 200)
+    return f"{checkpoint[0]} {checkpoint[1]} 200"
 
 
-# def heuristic2(checkpoint, x, y, angle):
-#     """
-#     Включаем полный ход, если смотрим почти на следующий флаг.
-#     Поворачиваемся в сторону следующего флага.
-#     """
-#     cx, cy = checkpoint
-#     dx = cx - x
-#     dy = cy - y
-#     cp_angle = math.atan2(dy, dx) * 180 / math.pi
-#     da = norm_angle(cp_angle - angle)
-#     if abs(da) > 15:
-#         return f"{cx} {cy} 0 turn"
-#     return f"{cx} {cy} 200 thrust"
-#
+def heuristic2(checkpoint, x, y, angle):
+    """
+    Включаем полный ход, если смотрим почти на следующий флаг.
+    Поворачиваемся в сторону следующего флага.
+    """
+    cx, cy = checkpoint
+    dx = cx - x
+    dy = cy - y
+    cp_angle = math.atan2(dy, dx) * 180 / math.pi
+    da = norm_angle(cp_angle - angle)
+    if abs(da) > 15:
+    #     return Move(cx, cy, 0)
+    # return Move(cx, cy, 200)
+        return f"{cx} {cy} 0 turn"
+    return f"{cx} {cy} 200 thrust"
+
 #
 # def heuristic3(checkpoint, x, y, vx, vy, angle):
 #     """

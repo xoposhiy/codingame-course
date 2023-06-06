@@ -2,7 +2,7 @@ import math
 from state import Move
 
 
-def heuristic(checkpoints):
+def heuristic(checkpoint):
     """На полном ходу летим к следующему флагу"""
-    return Move(checkpoints[0], checkpoints[1], 200)
+    return f"{checkpoint[0]} {checkpoint[1]} 200"
 
