@@ -1,7 +1,8 @@
 import unittest
 from norm_angle import *
 
-class HeuristicTests(unittest.TestCase):
+
+class NormAngleTests(unittest.TestCase):
     def test_norm_angle(self):
         assert norm_angle(360) == 0
         assert norm_angle(370) == 10

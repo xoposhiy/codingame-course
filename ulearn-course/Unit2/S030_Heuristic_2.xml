@@ -10,6 +10,6 @@
     <hideExpectedOutput>true</hideExpectedOutput>
     <userCodeFile>heuristic2.py</userCodeFile>
     <dockerImageName>algorithms-sandbox</dockerImageName>
-    <run>python3.8 runner.py HeuristicTests2</run>
+    <run>python3.8 runner.py heuristic_test HeuristicTests2</run>
   </exercise.universal>
 </slide.exercise>

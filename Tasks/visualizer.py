@@ -6,8 +6,11 @@ from PyQt5.QtWidgets import QWidget, QPushButton, QLabel
 from PyQt5.QtGui import QPainter, QPen
 from PyQt5.QtCore import Qt, QTimer
 
-NormScale = 8
+NormScale = 10
 
+def parse_move(line: str):
+    f = line.split(" ")
+    return Move(int(f[0]), int(f[1]), int(f[2]))
 
 def Normalize(value: int):
     return value // NormScale
@@ -16,7 +19,7 @@ def Normalize(value: int):
 class Visualizer(QWidget):
     checkPointRadius = 600
 
-    def __init__(self, viz_state: State, next_move_func, is_simulation_mode=False):
+    def __init__(self, viz_state: State, next_move_func, laps_number=1,heuristic_number=1, is_simulation_mode=False):
         super().__init__()
         self.next_move_btn = QPushButton('Next move', self)
         self.next_move_btn.clicked.connect(self.drawNextMove)
@@ -42,6 +45,17 @@ class Visualizer(QWidget):
         self.state = viz_state
         self.next_move_func = next_move_func
         self.is_simulation_mode = is_simulation_mode
+        self.heuristic_number = heuristic_number
+        self.laps_number = laps_number
+        best_moves = []
+        with open('BestMoves', 'r') as f:
+            lines = f.readlines()
+        for line in lines:
+            best_moves.append(parse_move(line))
+
+        self.show_ghost = False
+
+        self.best_moves = best_moves
         self.picktimer = QTimer()
 
     def drawPreviousState(self):
@@ -62,9 +76,7 @@ class Visualizer(QWidget):
 
     def drawNextMove(self):
         self.prev_state_btn.setDisabled(False)
-
-        # if self.state.next_state is not None:
-        #     self.state = self.state.next_state
+        # if self.state.checkpoint_index >= self.laps_number * len(self.state.checkpoints):
         #     self.update()
         #     return
 
@@ -75,7 +87,11 @@ class Visualizer(QWidget):
                 self.state.vx, self.state.vy,
                 self.state.angle))
         else:
-            self.state.next_moves = [self.next_move_func(self.state.next_checkpoint())]
+            if self.heuristic_number == 1:
+                self.state.next_moves = [parse_move(self.next_move_func(self.state.next_checkpoint()))]
+            if self.heuristic_number == 2:
+                self.state.next_moves = [parse_move(self.next_move_func(self.state.next_checkpoint(),
+                                                                    self.state.x, self.state.y, self.state.angle))]
         self.state = self.state.simulate()
         self.state_count_label.setText(f"Move {self.state.state_index}")
         self.update()
@@ -98,6 +114,8 @@ class Visualizer(QWidget):
         self.drawCar(qp)
         self.drawSpeedVector(qp)
         self.drawTrajectory(qp)
+        if self.show_ghost:
+            self.drawGhost(qp)
         qp.end()
 
     def drawCheckpoints(self, qp):
