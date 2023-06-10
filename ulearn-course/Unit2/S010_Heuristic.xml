@@ -12,10 +12,10 @@
     <hideSolutions>true</hideSolutions>
     <hideExpectedOutput>true</hideExpectedOutput>
     <userCodeFile>heuristic.py</userCodeFile>
-
-    <excludePathForStudent>/Heuristic/.pytest_cache/</excludePathForStudent>
-    <excludePathForStudent>/Heuristic/runner.py</excludePathForStudent>
-    <excludePathForStudent>/Heuristic/heuristic_runner_tests</excludePathForStudent>
+    <excludePathForStudent>./.pytest_cache/</excludePathForStudent>
+    <excludePathForStudent>./runner.py</excludePathForStudent>
+    <excludePathForStudent>./heuristic_runner_tests.py</excludePathForStudent>
+    <excludePathForStudent>./result.py</excludePathForStudent>
     <dockerImageName>algorithms-sandbox</dockerImageName>
     <run>python3.8 runner.py heuristic_runner_tests HeuristicTests</run>
   </exercise.universal>
