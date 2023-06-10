@@ -25,7 +25,7 @@ class HeuristicTests2(unittest.TestCase):
 
         if (Visualize):
             app = QApplication([])
-            visualizer = Visualizer(s, heuristic2, 2)
+            visualizer = Visualizer(app, s, heuristic2, laps_number=3, heuristic_number=2)
             visualizer.setWindowTitle("test")
             visualizer.show()
             # visualizer.drawAllGame()
@@ -45,7 +45,7 @@ class HeuristicTests2(unittest.TestCase):
 
         if (Visualize):
             app = QApplication([])
-            visualizer = Visualizer(s, heuristic2, 2)
+            visualizer = Visualizer(app, s, heuristic2, 2)
             visualizer.setWindowTitle("test")
             visualizer.show()
             # visualizer.drawAllGame()
@@ -64,7 +64,7 @@ class HeuristicTests2(unittest.TestCase):
         turnNumber = 0
         if (False):
             app = QApplication([])
-            visualizer = Visualizer(s, heuristic2, 2)
+            visualizer = Visualizer(app, s, heuristic2, 2)
             visualizer.setWindowTitle("test")
             visualizer.show()
             # visualizer.drawAllGame()

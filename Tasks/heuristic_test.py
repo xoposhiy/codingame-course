@@ -18,18 +18,17 @@ def parse_move(line: str):
 
 class HeuristicTests(unittest.TestCase):
     def test_heruisic1(self):
-        chs = [(12000, 1000), (12500, 2500), (12500, 5500), (12000, 7000)] # (1000, 4000)]#, (3500, 5500), (3500, 2500), (4000, 1000)]
+        chs = [(2000, 2000), (12000, 7000)]
 
-        # chs = [(8500, 1000), (10975,2025), (12000, 4500), (8500, 8000), (5000, 4500)]  # , (3500, 5500), (3500, 2500), (4000, 1000)]
-        s = State(chs, 0, 12000, 1000, 0, 0, 86, [], [])
+        s = State(chs, 0, 1000, 1000, 0, 0, 45, [], [])
         turnNumber = 0
+        laps_number = 2
 
         if (Visualize):
             app = QApplication([])
-            visualizer = Visualizer(s, heuristic, 1)
+            visualizer = Visualizer(app, s, heuristic, laps_number=laps_number, heuristic_number=1)
             visualizer.setWindowTitle("test")
             visualizer.show()
-            # visualizer.drawAllGame()
             app.exec()
         else:
             while turnNumber < 600:
@@ -37,16 +36,17 @@ class HeuristicTests(unittest.TestCase):
                 turnNumber += 1
                 if s.checkpoint_index == len(s.checkpoints):
                     break
-            self.assertGreaterEqual(s.checkpoint_index, len(s.checkpoints))
+            self.assertGreaterEqual(s.checkpoint_index, len(s.checkpoints)*laps_number)
 
     def test_heruisic2(self):
         chs = [(1000, 1000), (15000, 8000), (1000, 8000), (15000, 5000)]
         s = State(chs, 0, 1000, 1000, 0, 0, 0, [], [])
         turnNumber = 0
+        laps_number = 1
 
         if (Visualize):
             app = QApplication([])
-            visualizer = Visualizer(s, heuristic, 1)
+            visualizer = Visualizer(app, s, heuristic, laps_number=laps_number, heuristic_number=1)
             visualizer.setWindowTitle("test")
             visualizer.show()
             # visualizer.drawAllGame()
@@ -57,4 +57,25 @@ class HeuristicTests(unittest.TestCase):
                 turnNumber += 1
                 if s.checkpoint_index == len(s.checkpoints):
                     break
-            self.assertGreaterEqual(s.checkpoint_index, len(s.checkpoints))
+            self.assertGreaterEqual(s.checkpoint_index, len(s.checkpoints) * laps_number)
+
+    def test_heruisic111(self):
+        chs = [(12000, 1000), (12500, 2500), (12500, 5500), (12000, 7000)]
+        s = State(chs, 0, 12000, 1000, 0, 0, 86, [], [])
+        turnNumber = 0
+        laps_number = 1
+
+        if (Visualize):
+            app = QApplication([])
+            visualizer = Visualizer(app, s, heuristic, laps_number=laps_number, heuristic_number=1)
+            visualizer.setWindowTitle("test")
+            visualizer.show()
+            # visualizer.drawAllGame()
+            app.exec()
+        else:
+            while turnNumber < 600:
+                s.simulate_move(parse_move(heuristic(s.next_checkpoint())))
+                turnNumber += 1
+                if s.checkpoint_index == len(s.checkpoints):
+                    break
+            self.assertGreaterEqual(s.checkpoint_index, len(s.checkpoints) * laps_number)

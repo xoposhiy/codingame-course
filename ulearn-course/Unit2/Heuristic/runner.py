@@ -8,7 +8,7 @@ def run(test_class):
     testLoad = unittest.TestLoader()
     suite = unittest.TestSuite(testLoad.loadTestsFromTestCase(test_class))
     with open(os.devnull, "w") as f:
-        runner = unittest.TextTestRunner(f, verbosity=0)
+        runner = unittest.TextTestRunner(f, verbosity=1)
         result = runner.run(suite)
         if len(result.errors) == 0 and len(result.failures) == 0:
             print('{"verdict": "Ok", "output": "Все тесты прошли успешно"}')
