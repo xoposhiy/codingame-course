@@ -1,5 +1,5 @@
 <?xml-model href="../ulearn.xsd"?>
-<unit xmlns="https://ulearn.me/schema/v2" title="Возможности ulearn" id="d4492182-fe1c-4531-900c-3a509c9e6c16" url="Features">
+<unit xmlns="https://ulearn.me/schema/v2" title="О курсе" id="d4492182-fe1c-4531-900c-3a509c9e6c16" url="Features">
   <slides>
     <add>S*.xml</add>
   </slides>

@@ -19,7 +19,7 @@ class Move:
 
 class State:
     def __init__(self, checkpoints, checkpoint_index, x, y, vx, vy, angle, next_moves,
-                 next_expected_moves, state_index=0, previous_state=None):
+                 next_expected_moves, state_index=0, previous_state=None, passed_points=[]):
         self.checkpoints = checkpoints
         self.checkpoint_index = checkpoint_index
         self.x = x
@@ -32,6 +32,7 @@ class State:
         self.previous_state = previous_state
         self.state_index = state_index
         self.next_state = None
+        self.passed_points = passed_points
 
     def __str__(self):
         return f'State(checkpoints, {self.checkpoint_index}, {self.x}, {self.y}, {self.vx}, {self.vy}, {self.angle})'
@@ -39,7 +40,7 @@ class State:
     def copy(self):
         return State(self.checkpoints, self.checkpoint_index, self.x, self.y,
                      self.vx, self.vy, self.angle, self.next_moves, self.next_expected_moves,
-                     self.state_index, self.previous_state)
+                     self.state_index, self.previous_state, self.passed_points)
 
     def next_checkpoint(self):
         return self.checkpoints[self.checkpoint_index % len(self.checkpoints)]
@@ -49,24 +50,6 @@ class State:
         state_copy.simulate_move(self.next_moves[0])
         self.next_state = state_copy
         return state_copy
-        # desired_angle = 180 * math.atan2(self.next_moves[0].y - self.y, self.next_moves[0].x - self.x) / math.pi
-        # da = norm_angle(desired_angle - self.angle)
-        # da = max(-18, min(18, da))
-        # saved_state = self.copy()
-        # self.angle = self.angle + da
-        # self.vx += self.next_moves[0].thrust * math.cos(self.angle * math.pi / 180)
-        # self.vy += self.next_moves[0].thrust * math.sin(self.angle * math.pi / 180)
-        # self.x = int(self.x + self.vx)
-        # self.y = int(self.y + self.vy)
-        # self.vx = int(0.85 * self.vx)
-        # self.vy = int(0.85 * self.vy)
-        # self.angle = round(self.angle) % 360
-        # xc, yc = self.next_checkpoint()
-        # dx, dy = self.x - xc, self.y - yc
-        # if dx * dx + dy * dy <= 600 * 600:
-        #     self.checkpoint_index += 1
-        # self.state_index += 1
-        # self.previous_state = saved_state
 
     def simulate_move(self, move):
         desired_angle = 180 * math.atan2(move.y - self.y, move.x - self.x) / math.pi
@@ -87,3 +70,4 @@ class State:
             self.checkpoint_index += 1
         self.state_index += 1
         self.previous_state = saved_state
+        self.passed_points.append((saved_state.x, saved_state.y))

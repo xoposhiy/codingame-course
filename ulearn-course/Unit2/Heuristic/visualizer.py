@@ -1,5 +1,3 @@
-import sys
-import math
 from state import State, Move
 from simulation_task import State as StudentState
 from PyQt5.QtWidgets import QWidget, QPushButton, QLabel
@@ -22,7 +20,8 @@ class Visualizer(QWidget):
     game_field_width = 16000
     game_field_height = 9000
 
-    def __init__(self, app, viz_state: State, next_move_func, laps_number=1,heuristic_number=1, is_simulation_mode=False):
+    def __init__(self, app, viz_state: State, next_move_func,
+                 laps_number=1, heuristic_number=1, is_simulation_mode=False):
         super().__init__()
         self.next_move_btn = QPushButton('Next move', self)
         self.next_move_btn.clicked.connect(self.drawNextMove)
@@ -63,15 +62,15 @@ class Visualizer(QWidget):
         self.is_simulation_mode = is_simulation_mode
         self.heuristic_number = heuristic_number
         self.laps_number = laps_number
-        best_moves = []
-        with open('BestMoves', 'r') as f:
-            lines = f.readlines()
-        for line in lines:
-            best_moves.append(parse_move(line))
+        # best_moves = []
+        # with open('BestMoves', 'r') as f:
+        #     lines = f.readlines()
+        # for line in lines:
+        #     best_moves.append(parse_move(line))
 
         self.show_ghost = False
 
-        self.best_moves = best_moves
+        # self.best_moves = best_moves
         self.picktimer = QTimer()
 
     def drawPreviousState(self):
@@ -85,7 +84,7 @@ class Visualizer(QWidget):
         self.picktimer.setInterval(100)
         self.picktimer.timeout.connect(self.drawNextMove)
         self.picktimer.start()
-        QTimer.singleShot(50000, self.stopDrawing)
+        QTimer.singleShot(60000, self.stopDrawing)
 
     def stopDrawing(self):
         self.picktimer.stop()
@@ -134,6 +133,7 @@ class Visualizer(QWidget):
         self.drawSpeedVector(qp)
         self.drawTrajectory(qp)
         self.drawPath(qp)
+        self.drawAimPoint(qp)
         if self.show_ghost:
             self.drawGhost(qp)
         qp.end()
@@ -152,7 +152,7 @@ class Visualizer(QWidget):
         qp.drawPoint(self.normalize_x(self.state.x), self.normalize_y(self.state.y))
 
     def drawSpeedVector(self, qp):
-        pen = QPen(Qt.green, 2, Qt.SolidLine)
+        pen = QPen(Qt.darkYellow, 3, Qt.SolidLine)
         qp.setPen(pen)
         qp.drawLine(self.normalize_x(self.state.x), self.normalize_y(self.state.y),
                     self.normalize_x(self.state.x + self.state.vx), self.normalize_y(self.state.y + self.state.vy))
@@ -170,8 +170,14 @@ class Visualizer(QWidget):
         qp.drawLine(self.normalize_x(prev_point[0]), self.normalize_y(prev_point[1]),
                     self.normalize_x(self.state.x), self.normalize_y(self.state.y))
 
+    def drawAimPoint(self, qp):
+        pen = QPen(Qt.red, 2, Qt.DotLine)
+        qp.setPen(pen)
+        qp.drawLine(self.normalize_x(self.state.x), self.normalize_y(self.state.y),
+                    self.normalize_x(self.state.next_moves[0].x), self.normalize_y(self.state.next_moves[0].y))
+
     def drawTrajectory(self, qp):
-        pen = QPen(Qt.red, 2, Qt.SolidLine)
+        pen = QPen(Qt.green, 3, Qt.SolidLine)
         qp.setPen(pen)
         state_copy = self.state.copy()
         for move in self.state.next_moves:
