@@ -3,14 +3,20 @@
   <scoring group="code" passedTestsScore="2"/>
   <markdown>
     Гонщик на эвристиках
-    Скачайте [проект с задачей](/Exercise/StudentZip).
+
+    Итак, давайте начинать. Первой игрой, с которой мы познакомимся является Search Race
+    Скачайте [проект](/Exercise/StudentZip).
   </markdown>
   <exercise.universal exerciseDirName="Heuristic" type="check-exit-code">
     <checkForPlagiarism>false</checkForPlagiarism>
     <hideSolutions>true</hideSolutions>
     <hideExpectedOutput>true</hideExpectedOutput>
     <userCodeFile>heuristic.py</userCodeFile>
+
+    <excludePathForStudent>/Heuristic/.pytest_cache/</excludePathForStudent>
+    <excludePathForStudent>/Heuristic/runner.py</excludePathForStudent>
+    <excludePathForStudent>/Heuristic/heuristic_runner_tests</excludePathForStudent>
     <dockerImageName>algorithms-sandbox</dockerImageName>
-    <run>python3.8 runner.py heuristic_test HeuristicTests</run>
+    <run>python3.8 runner.py heuristic_runner_tests HeuristicTests</run>
   </exercise.universal>
 </slide.exercise>

@@ -1,6 +1,3 @@
-import math
-from state import Move
-
 
 def heuristic(checkpoint):
     """На полном ходу летим к следующему флагу"""
