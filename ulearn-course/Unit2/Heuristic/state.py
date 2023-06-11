@@ -40,7 +40,7 @@ class State:
     def copy(self):
         return State(self.checkpoints, self.checkpoint_index, self.x, self.y,
                      self.vx, self.vy, self.angle, self.next_moves, self.next_expected_moves,
-                     self.state_index, self.previous_state, self.passed_points)
+                     self.state_index, self.previous_state, self.passed_points.copy())
 
     def next_checkpoint(self):
         return self.checkpoints[self.checkpoint_index % len(self.checkpoints)]
