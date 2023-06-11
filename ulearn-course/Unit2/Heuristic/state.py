@@ -8,13 +8,13 @@ def norm_angle(a):
         a -= 360  # -180..180
     return a
 
+
 class Move:
     def __init__(self, x, y, thrust, message=""):
         self.x, self.y, self.thrust, self.message = x, y, thrust, message
 
     def __str__(self):
         return f'{self.x} {self.y} {self.thrust} {self.message}'
-
 
 
 class State:
