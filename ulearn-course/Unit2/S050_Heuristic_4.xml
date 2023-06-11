@@ -4,12 +4,12 @@
   <markdown>
     Гонщик на эвристиках 4
   </markdown>
-  <exercise.universal exerciseDirName="Heuristic" noStudentZip="true" type="check-exit-code">
+  <exercise.universal exerciseDirName="Search_Race/Heuristic" noStudentZip="true" type="check-exit-code">
     <checkForPlagiarism>false</checkForPlagiarism>
     <hideSolutions>true</hideSolutions>
     <hideExpectedOutput>true</hideExpectedOutput>
     <userCodeFile>heuristic4.py</userCodeFile>
     <dockerImageName>algorithms-sandbox</dockerImageName>
-    <run>python3.8 runner.py heuristic_runner_tests HeuristicTests2</run>
+    <run>python3.8 runner.py heuristic_runner_tests Heuristic4Tests</run>
   </exercise.universal>
 </slide.exercise>

@@ -1,11 +1,10 @@
-import sys
 import math
 
 
 def norm_angle(a):
-    a = a % 360  # 0..360
+    a = a % 360
     if a > 180:
-        a -= 360  # -180..180
+        a -= 360
     return a
 
 
@@ -35,7 +34,7 @@ class State:
         self.passed_points = passed_points
 
     def __str__(self):
-        return f'State(checkpoints, {self.checkpoint_index}, {self.x}, {self.y}, {self.vx}, {self.vy}, {self.angle})'
+        return f'{self.checkpoint_index}, {self.x}, {self.y}, {self.vx}, {self.vy}, {self.angle})'
 
     def copy(self):
         return State(self.checkpoints, self.checkpoint_index, self.x, self.y,
@@ -44,6 +43,9 @@ class State:
 
     def next_checkpoint(self):
         return self.checkpoints[self.checkpoint_index % len(self.checkpoints)]
+
+    def next_checkpoint2(self):
+        return self.checkpoints[(self.checkpoint_index+1) % len(self.checkpoints)]
 
     def simulate(self):
         state_copy = self.copy()

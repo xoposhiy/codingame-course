@@ -199,7 +199,16 @@ class Visualizer(QWidget):
                 self.state.next_moves = [parse_move(self.next_move_func(self.state.next_checkpoint()))]
             if self.heuristic_number == 2:
                 self.state.next_moves = [parse_move(self.next_move_func(self.state.next_checkpoint(),
-                                                                    self.state.x, self.state.y, self.state.angle))]
+                                                                        self.state.x, self.state.y, self.state.angle))]
+            if self.heuristic_number == 3:
+                self.state.next_moves = [parse_move(self.next_move_func(self.state.next_checkpoint(),
+                                                                        self.state.x, self.state.y,
+                                                                        self.state.vx, self.state.vy, self.state.angle))]
+            if self.heuristic_number == 4:
+                self.state.next_moves = [parse_move(self.next_move_func(self.state.next_checkpoint(),
+                                                                        self.state.next_checkpoint2(),
+                                                                        self.state.x, self.state.y,
+                                                                        self.state.vx, self.state.vy, self.state.angle))]
         self.state = self.state.simulate()
         self.update_labels()
         self.update()
@@ -233,14 +242,6 @@ class Visualizer(QWidget):
     def paintEvent(self, e):
         self.drawState()
 
-    # def keyPressEvent(self, e):
-    #     if e.key() == Qt.RightArrow:
-    #         self.drawNextMove()
-    #     if e.key() == Qt.LeftArrow:
-    #         self.drawPreviousState()
-    #     if e.key() == Qt.Key_Space:
-    #         self.drawAllGame()
-
     def drawState(self):
         qp = QPainter()
         qp.begin(self)
@@ -262,7 +263,7 @@ class Visualizer(QWidget):
         pen = QPen(Qt.black, 2, Qt.SolidLine)
         qp.setPen(pen)
         for index, checkpoint in enumerate(self.state.checkpoints):
-            qp.drawText(self.normalize_x(checkpoint[0] - 50), self.normalize_y(checkpoint[1] + 100), str(index))
+            qp.drawText(self.normalize_x(checkpoint[0] - 50), self.normalize_y(checkpoint[1] + 150), str(index))
             qp.drawEllipse(self.normalize_x(checkpoint[0] - self.checkPointRadius), self.normalize_y(checkpoint[1] - self.checkPointRadius),
                            self.normalize_raduis_x(2*self.checkPointRadius), self.normalize_raduis_y(2*self.checkPointRadius))
 

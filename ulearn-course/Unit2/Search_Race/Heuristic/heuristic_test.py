@@ -1,7 +1,7 @@
 import unittest
 from visualizer import Visualizer
 from heuristic import heuristic
-from state import State, Move
+from visualizer_state import State, Move
 
 from PyQt5.QtWidgets import QApplication
 

@@ -1,7 +1,7 @@
 import unittest
 from visualizer import Visualizer
 from heuristic2 import heuristic2
-from state import State, Move
+from visualizer_state import State, Move
 
 from PyQt5.QtWidgets import QApplication
 
@@ -9,11 +9,11 @@ Visualize = True
 
 
 def parse_move(line: str):
-    f = line.split(" ")
-    return Move(int(f[0]), int(f[1]), int(f[2]))
+    parsed = line.split(" ")
+    return Move(int(parsed[0]), int(parsed[1]), int(parsed[2]))
 
 
-class HeuristicTests2(unittest.TestCase):
+class Heuristic2Tests(unittest.TestCase):
     def test_two_points(self):
         chs = [(2000, 2000), (12000, 7000)]
         s = State(chs, 0, 1000, 1000, 0, 0, 45, [], [])

@@ -7,7 +7,7 @@
     Итак, давайте начинать. Первой игрой, с которой мы познакомимся является Search Race
     Скачайте [проект](/Exercise/StudentZip).
   </markdown>
-  <exercise.universal exerciseDirName="Heuristic" type="check-exit-code">
+  <exercise.universal exerciseDirName="Search_Race/Heuristic" type="check-exit-code">
     <checkForPlagiarism>false</checkForPlagiarism>
     <hideSolutions>true</hideSolutions>
     <hideExpectedOutput>true</hideExpectedOutput>

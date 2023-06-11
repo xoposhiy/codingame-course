@@ -4,7 +4,7 @@
   <markdown>
     Нормирование угла
   </markdown>
-  <exercise.universal exerciseDirName="Heuristic" noStudentZip="true" type="check-exit-code">
+  <exercise.universal exerciseDirName="Search_Race/Heuristic" noStudentZip="true" type="check-exit-code">
     <checkForPlagiarism>false</checkForPlagiarism>
     <hideSolutions>true</hideSolutions>
     <hideExpectedOutput>true</hideExpectedOutput>
