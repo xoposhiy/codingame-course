@@ -5,6 +5,8 @@ from heuristic3 import heuristic3
 from heuristic4 import heuristic4
 from visualizer_state import State, Move
 
+unittest.TestLoader.sortTestMethodsUsing = None
+
 
 def parse_move(line: str):
     f = line.split(" ")

@@ -2,7 +2,7 @@ import unittest
 from samegame import *
 
 
-class MovesTests(unittest.TestCase):
+class ApplyMovesTests(unittest.TestCase):
     def test_apply_move(self):
         s = read_state_from([
             '1 1 2',

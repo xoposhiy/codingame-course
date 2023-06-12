@@ -1,15 +1,15 @@
 <?xml-model href="../ulearn.xsd"?>
-<slide.exercise id="ec7ca476-61c3-4419-be42-99d6d346f278" title="Оценка состояния" xmlns="https://ulearn.me/schema/v2">
+<slide.exercise id="059cee33-453f-4807-9349-347e659978c7" title="Рандомный поиск" xmlns="https://ulearn.me/schema/v2">
   <scoring group="code" passedTestsScore="2"/>
   <markdown>
-    Оценка состояния
+    Рандомный поиск
   </markdown>
   <exercise.universal exerciseDirName="Search_Race/Simulation" noStudentZip="true" type="check-exit-code">
     <checkForPlagiarism>false</checkForPlagiarism>
     <hideSolutions>true</hideSolutions>
     <hideExpectedOutput>true</hideExpectedOutput>
-    <userCodeFile>estimate_task.py</userCodeFile>
+    <userCodeFile>random_search_task.py</userCodeFile>
     <dockerImageName>algorithms-sandbox</dockerImageName>
-    <run>python3.8 runner.py estimate_tests EstimateTests</run>
+    <run>python3.8 runner.py random_search_runner_tests RandomSearchTests</run>
   </exercise.universal>
 </slide.exercise>

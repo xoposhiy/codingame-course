@@ -134,6 +134,7 @@ def get_best_move(state):
     best_move = best_moves[0]
     return best_move
 
+
 def read_checkpoints():
     n = int(input())  # количество чекпоинтов
     checkpoints = []

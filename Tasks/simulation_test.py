@@ -8,7 +8,7 @@ from state import State
 from PyQt5.QtWidgets import QApplication
 from PyQt5.QtCore import QTimer
 
-Visualize = True
+Visualize = False
 
 
 class SimulationTests(unittest.TestCase):
@@ -17,6 +17,7 @@ class SimulationTests(unittest.TestCase):
         chs = [(10353, 1986), (2757, 4659), (3358, 2838)]
         s = State(chs, 0, 10353, 1986, 100, 200, 161, [], [])
         timer = QTimer()
+        turnNumber = 0
 
         if (Visualize):
             app = QApplication([])
@@ -27,3 +28,8 @@ class SimulationTests(unittest.TestCase):
             # visualizer.drawAllGame()
 
             app.exec()
+        else:
+            while turnNumber < 600:
+                s.simulate_move(random_search(s)[0])
+                turnNumber += 1
+            self.assertGreaterEqual(s.checkpoint_index, len(s.checkpoints) * 3)

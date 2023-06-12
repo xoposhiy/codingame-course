@@ -1,13 +1,14 @@
-from state import State, Move
-from simulation_task import State as StudentState
+from visualizer_state import State, Move
+from state import State as StudentState
 from PyQt5.QtWidgets import QWidget, QPushButton, QLabel, QCheckBox
 from PyQt5.QtGui import QPainter, QPen, QFont
 from PyQt5.QtCore import Qt, QTimer
+from typing import Callable
 
 
-def parse_move(line: str):
-    f = line.split(" ")
-    return Move(int(f[0]), int(f[1]), int(f[2]))
+def parse_move(line: str) -> Move:
+    parts = line.split(" ", 3)
+    return Move(int(parts[0]), int(parts[1]), int(parts[2]))
 
 
 class Visualizer(QWidget):
@@ -70,11 +71,12 @@ class Visualizer(QWidget):
         self.picktimer = QTimer()
 
     # noinspection PyAttributeOutsideInit
-    def init_labels(self, start_x, start_y, delta_y, max_label_width, width_for_result, font):
+    def init_labels(self, start_x: int, start_y: int, delta_y: int, max_label_width: int,
+                    width_for_result: int, font: QFont):
         state = self.state
         cur_x, cur_y = start_x, start_y
 
-        self.state_count_label = self.init_label(cur_x, cur_y, "Ход: 0", max_label_width, font)
+        self.state_count_label = self.init_label(cur_x, cur_y, "Ход: 0\t", max_label_width, font)
         cur_y += delta_y - 30
 
         self.car_pos_label = self.init_label(cur_x, cur_y,
@@ -102,7 +104,7 @@ class Visualizer(QWidget):
                                            max_label_width, QFont("Times", 18))
         self.test_result.setVisible(False)
 
-    def init_label(self, x, y, text, max_label_width, font):
+    def init_label(self, x: int, y: int, text: str, max_label_width: int, font: QFont) -> QLabel:
         label = QLabel(text, self)
         label.setMaximumWidth(max_label_width)
         label.move(x, y)
@@ -110,7 +112,7 @@ class Visualizer(QWidget):
         return label
 
     # noinspection PyAttributeOutsideInit
-    def init_checkboxes(self, start_x, start_y, delta_y, font):
+    def init_checkboxes(self, start_x: int, start_y: int, delta_y: int, font: QFont):
         cur_x, cur_y = start_x, start_y
 
         self.show_path_cb = self.init_checkbox(cur_x, cur_y, "Показывать пройденный путь", font, self.path_cb_change)
@@ -125,7 +127,7 @@ class Visualizer(QWidget):
         self.show_trajectories_cb = self.init_checkbox(cur_x, cur_y, "Показывать возможные траектории",
                                                        font, self.trajectories_cb_change)
 
-    def init_checkbox(self, x, y, text, font, function):
+    def init_checkbox(self, x: int, y: int, text: str, font: QFont, function: Callable) -> QCheckBox:
         cb = QCheckBox(text, self)
         cb.setFont(font)
         cb.move(x, y)
@@ -133,7 +135,7 @@ class Visualizer(QWidget):
         return cb
 
     # noinspection PyAttributeOutsideInit
-    def init_buttons(self, start_x, start_y, delta_y):
+    def init_buttons(self, start_x: int, start_y: int, delta_y: int):
         cur_x, cur_y = start_x, start_y
 
         self.prev_state_btn = self.init_button(cur_x, cur_y, "Откатить ход", self.draw_previous_state)
@@ -148,7 +150,7 @@ class Visualizer(QWidget):
         self.pause_game_btn = self.init_button(cur_x, cur_y, "Пауза", self.stop_drawing)
         self.pause_game_btn.setVisible(False)
 
-    def init_button(self, x, y, text, function):
+    def init_button(self, x: int, y: int, text: str, function: Callable) -> QPushButton:
         button = QPushButton(text, self)
         button.clicked.connect(function)
         button.setFixedSize(*self.buttons_size)
@@ -206,9 +208,9 @@ class Visualizer(QWidget):
                                                                         self.state.vx, self.state.vy, self.state.angle))]
             if self.heuristic_number == 4:
                 self.state.next_moves = [parse_move(self.next_move_func(self.state.next_checkpoint(),
-                                                                        self.state.next_checkpoint2(),
-                                                                        self.state.x, self.state.y,
-                                                                        self.state.vx, self.state.vy, self.state.angle))]
+                                                                    self.state.next_checkpoint2(),
+                                                                    self.state.x, self.state.y,
+                                                                    self.state.vx, self.state.vy, self.state.angle))]
         self.state = self.state.simulate()
         self.update_labels()
         self.update()
@@ -240,26 +242,26 @@ class Visualizer(QWidget):
         self.car_angle_label.setText(f"Угол машинки\n angle: {self.state.angle}")
 
     def paintEvent(self, e):
-        self.drawState()
+        self.draw_state()
 
-    def drawState(self):
+    def draw_state(self):
         qp = QPainter()
         qp.begin(self)
-        self.drawCheckpoints(qp)
-        self.drawCar(qp)
+        self.draw_checkpoints(qp)
+        self.draw_car(qp)
         if self.show_speed:
-            self.drawSpeedVector(qp)
+            self.draw_speed_vector(qp)
         if self.show_trajectories:
-            self.drawTrajectories(qp)
+            self.draw_trajectories(qp)
         if self.show_path:
-            self.drawPath(qp)
+            self.draw_path(qp)
         if self.show_aim:
-            self.drawAimPoint(qp)
+            self.draw_aim_point(qp)
         if self.show_ghost:
             self.drawGhost(qp)
         qp.end()
 
-    def drawCheckpoints(self, qp):
+    def draw_checkpoints(self, qp: QPainter):
         pen = QPen(Qt.black, 2, Qt.SolidLine)
         qp.setPen(pen)
         for index, checkpoint in enumerate(self.state.checkpoints):
@@ -267,18 +269,18 @@ class Visualizer(QWidget):
             qp.drawEllipse(self.normalize_x(checkpoint[0] - self.checkPointRadius), self.normalize_y(checkpoint[1] - self.checkPointRadius),
                            self.normalize_raduis_x(2*self.checkPointRadius), self.normalize_raduis_y(2*self.checkPointRadius))
 
-    def drawCar(self, qp):
+    def draw_car(self, qp: QPainter):
         pen = QPen(Qt.black, 6, Qt.SolidLine)
         qp.setPen(pen)
         qp.drawPoint(self.normalize_x(self.state.x), self.normalize_y(self.state.y))
 
-    def drawSpeedVector(self, qp):
+    def draw_speed_vector(self, qp: QPainter):
         pen = QPen(Qt.darkYellow, 3, Qt.SolidLine)
         qp.setPen(pen)
         qp.drawLine(self.normalize_x(self.state.x), self.normalize_y(self.state.y),
                     self.normalize_x(self.state.x + self.state.vx), self.normalize_y(self.state.y + self.state.vy))
 
-    def drawPath(self, qp):
+    def draw_path(self, qp: QPainter):
         pen = QPen(Qt.blue, 2, Qt.SolidLine)
         qp.setPen(pen)
         if len(self.state.passed_points) == 0:
@@ -291,14 +293,14 @@ class Visualizer(QWidget):
         qp.drawLine(self.normalize_x(prev_point[0]), self.normalize_y(prev_point[1]),
                     self.normalize_x(self.state.x), self.normalize_y(self.state.y))
 
-    def drawAimPoint(self, qp):
+    def draw_aim_point(self, qp: QPainter):
         pen = QPen(Qt.red, 2, Qt.DotLine)
         qp.setPen(pen)
         if len(self.state.next_moves) != 0:
             qp.drawLine(self.normalize_x(self.state.x), self.normalize_y(self.state.y),
                     self.normalize_x(self.state.next_moves[0].x), self.normalize_y(self.state.next_moves[0].y))
 
-    def drawTrajectories(self, qp):
+    def draw_trajectories(self, qp: QPainter):
         pen = QPen(Qt.green, 3, Qt.SolidLine)
         qp.setPen(pen)
         state_copy = self.state.copy()
@@ -308,15 +310,15 @@ class Visualizer(QWidget):
             qp.drawLine(self.normalize_x(cur_x), self.normalize_y(cur_y),
                     self.normalize_x(state_copy.x), self.normalize_y(state_copy.y))
 
-    def normalize_x(self, value: int):
+    def normalize_x(self, value: int) -> int:
         return (value * self.viz_field_width) // self.game_field_width + self.info_block_width + self.viz_edge_empty_space//2
 
-    def normalize_y(self, value: int):
+    def normalize_y(self, value: int) -> int:
         return (value * self.viz_field_height) // self.game_field_height + self.viz_edge_empty_space//2
 
-    def normalize_raduis_x(self, value: int):
+    def normalize_raduis_x(self, value: int) -> int:
         return (value * self.viz_field_width) // self.game_field_width
 
-    def normalize_raduis_y(self, value: int):
+    def normalize_raduis_y(self, value: int) -> int:
         return (value * self.viz_field_width) // self.game_field_width
 

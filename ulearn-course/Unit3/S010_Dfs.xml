@@ -1,0 +1,17 @@
+<?xml-model href="../ulearn.xsd"?>
+<slide.exercise id="d5b7268d-5681-4193-8490-f3031edadcff" title="DFS" xmlns="https://ulearn.me/schema/v2">
+  <scoring group="code" passedTestsScore="2"/>
+  <markdown>
+    SameGame
+
+    Скачайте [проект](/Exercise/StudentZip).
+  </markdown>
+  <exercise.universal exerciseDirName="SameGame" type="check-exit-code">
+    <checkForPlagiarism>false</checkForPlagiarism>
+    <hideSolutions>true</hideSolutions>
+    <hideExpectedOutput>true</hideExpectedOutput>
+    <userCodeFile>samegame.py</userCodeFile>
+    <dockerImageName>algorithms-sandbox</dockerImageName>
+    <run>python3.8 runner.py dfs_tests DfsTests</run>
+  </exercise.universal>
+</slide.exercise>

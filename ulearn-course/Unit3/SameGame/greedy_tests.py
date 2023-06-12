@@ -5,7 +5,7 @@ from visualizer import Visualizer
 
 Visualize = True
 
-class SameGameTests(unittest.TestCase):
+class GreedyTests(unittest.TestCase):
     def test_1(self):
         s = read_state_from([
             '1 1 2',

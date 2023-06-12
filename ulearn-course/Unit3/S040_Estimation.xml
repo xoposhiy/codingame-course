@@ -1,14 +1,15 @@
 <?xml-model href="../ulearn.xsd"?>
-<slide.exercise id="ec7ca476-61c3-4419-be42-99d6d346f278" title="Оценка состояния" xmlns="https://ulearn.me/schema/v2">
+<slide.exercise id="393ad225-8de3-4f9f-87d8-8e8e8e461939" title="Оценка состояния" xmlns="https://ulearn.me/schema/v2">
   <scoring group="code" passedTestsScore="2"/>
   <markdown>
     Оценка состояния
+
   </markdown>
-  <exercise.universal exerciseDirName="Search_Race/Simulation" noStudentZip="true" type="check-exit-code">
+  <exercise.universal exerciseDirName="SameGame" type="check-exit-code">
     <checkForPlagiarism>false</checkForPlagiarism>
     <hideSolutions>true</hideSolutions>
     <hideExpectedOutput>true</hideExpectedOutput>
-    <userCodeFile>estimate_task.py</userCodeFile>
+    <userCodeFile>samegame.py</userCodeFile>
     <dockerImageName>algorithms-sandbox</dockerImageName>
     <run>python3.8 runner.py estimate_tests EstimateTests</run>
   </exercise.universal>

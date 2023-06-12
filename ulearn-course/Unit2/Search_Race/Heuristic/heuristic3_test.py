@@ -5,6 +5,8 @@ from visualizer_state import State, Move
 
 from PyQt5.QtWidgets import QApplication
 
+unittest.TestLoader.sortTestMethodsUsing = None
+
 Visualize = True
 
 

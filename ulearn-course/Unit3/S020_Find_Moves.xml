@@ -1,0 +1,16 @@
+<?xml-model href="../ulearn.xsd"?>
+<slide.exercise id="f5bc0ded-bf71-4747-a9d4-1e8a2d332612" title="Нахождение ходов" xmlns="https://ulearn.me/schema/v2">
+  <scoring group="code" passedTestsScore="2"/>
+  <markdown>
+    Нахождение ходов
+
+  </markdown>
+  <exercise.universal exerciseDirName="SameGame" type="check-exit-code">
+    <checkForPlagiarism>false</checkForPlagiarism>
+    <hideSolutions>true</hideSolutions>
+    <hideExpectedOutput>true</hideExpectedOutput>
+    <userCodeFile>samegame.py</userCodeFile>
+    <dockerImageName>algorithms-sandbox</dockerImageName>
+    <run>python3.8 runner.py find_moves_tests MovesTests</run>
+  </exercise.universal>
+</slide.exercise>

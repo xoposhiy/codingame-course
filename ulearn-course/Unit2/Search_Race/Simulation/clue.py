@@ -2,15 +2,19 @@
 result_filename = "result.py"
 import_lines = set()
 code = []
-filenames = ["heuristic.py", "heuristic2.py", "heuristic3.py", "heuristic4.py", "main.py"]
+filenames = ["state.py", "estimate_task.py", "create_moves_task.py", "random_search_task.py", "main.py"]
 
 
 def read_file(filename):
     with open(filename, 'r') as f:
         lines = f.readlines()
         for line in lines:
-            if line.startswith("import") or line.startswith("from"):
+            if line.startswith("import"):
                 import_lines.add(line)
+            elif line.startswith("from"):
+                module = line.split()[1] + ".py"
+                if module not in filenames:
+                    import_lines.add(line)
             else:
                 code.append(line)
 

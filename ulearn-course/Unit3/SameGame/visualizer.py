@@ -27,7 +27,7 @@ class Visualizer(QWidget):
 
         self.state = viz_state
         self.max_width = len(viz_state.columns)
-        self.max_height = len(viz_state.columns)
+        self.max_height = len(viz_state.columns[0])
         self.cur_width = len(viz_state.columns)
         self.cur_height = len(viz_state.columns)
         self.next_move_func = next_move_func
