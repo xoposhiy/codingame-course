@@ -2,7 +2,7 @@ import math
 from norm_angle import norm_angle
 
 
-def heuristic2(checkpoint, x, y, angle):
+def heuristic2(checkpoint: (int, int), x: int, y: int, angle: int) -> str:
     """
     Включаем полный ход, если смотрим почти на следующий флаг.
     Поворачиваемся в сторону следующего флага.

@@ -8,7 +8,7 @@ def is_time_to_brake(dx, dy, vx, vy):
     return v * 6 > d
 
 
-def heuristic3(checkpoint, x, y, vx, vy, angle):
+def heuristic3(checkpoint: (int, int), x: int, y: int, vx: int, vy: int, angle: int) -> str:
     """
     Если текущая скорость такая, что до следующего чекпоинта мы докатимся по инерции,
     то выключаем двигатель.

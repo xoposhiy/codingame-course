@@ -9,8 +9,8 @@ Visualize = True
 
 
 def parse_move(line: str):
-    f = line.split(" ")
-    return Move(int(f[0]), int(f[1]), int(f[2]))
+    parts = line.split(" ")
+    return Move(int(parts[0]), int(parts[1]), int(parts[2]))
 
 
 class HeuristicTests(unittest.TestCase):

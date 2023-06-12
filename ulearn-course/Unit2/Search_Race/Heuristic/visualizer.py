@@ -7,8 +7,8 @@ from typing import Callable
 
 
 def parse_move(line: str) -> Move:
-    x, y, thrust = line.split(" ")
-    return Move(int(x), int(y), int(thrust))
+    parts = line.split(" ", 3)
+    return Move(int(parts[0]), int(parts[1]), int(parts[2]))
 
 
 class Visualizer(QWidget):
@@ -76,7 +76,7 @@ class Visualizer(QWidget):
         state = self.state
         cur_x, cur_y = start_x, start_y
 
-        self.state_count_label = self.init_label(cur_x, cur_y, "Ход: 0", max_label_width, font)
+        self.state_count_label = self.init_label(cur_x, cur_y, "Ход: 0\t", max_label_width, font)
         cur_y += delta_y - 30
 
         self.car_pos_label = self.init_label(cur_x, cur_y,
