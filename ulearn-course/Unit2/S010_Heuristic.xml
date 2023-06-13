@@ -1,10 +1,13 @@
 <?xml-model href="../ulearn.xsd"?>
-<slide.exercise id="ce8d0185-5ee3-4b61-9d6b-ec81de09513e" title="Первая задача" xmlns="https://ulearn.me/schema/v2">
+<slide.exercise id="ce8d0185-5ee3-4b61-9d6b-ec81de09513e" title="Гонщик на эвристиках" xmlns="https://ulearn.me/schema/v2">
   <scoring group="code" passedTestsScore="2"/>
   <markdown>
     Гонщик на эвристиках
 
-    Итак, давайте начинать. Первой игрой, с которой мы познакомимся является Search Race
+    Итак, давайте начинать. Первой игрой, с которой мы познакомимся является [Search Race]()
+    Search Race – это оптимизационная головоломка, в которой игроку нужно как можно быстрее закончить гонку, пройдя через серию контрольных точек.
+
+
     Скачайте [проект](/Exercise/StudentZip).
   </markdown>
   <exercise.universal exerciseDirName="Search_Race/Heuristic" type="check-exit-code">

@@ -1,0 +1,12 @@
+<?xml-model href="../ulearn.xsd"?>
+<slide id="4fc7107c-b040-4038-bff6-7435cc124218" title="До начала работы" xmlns="https://ulearn.me/schema/v2">
+  <markdown>
+    Для прохождения курса Вам потребуется установить язык Python, минимальной версии 3.8.
+    Сделать это можно [тут](https://www.python.org/downloads/)
+
+    Также, для комфортного прохождения советуем устоновить среду разработки PyCharm Community Edition.
+    Это удобная IDE для разработки приложений.
+
+    Скачать PyCharm можно [тут](https://www.jetbrains.com/pycharm/download)
+  </markdown>
+</slide>

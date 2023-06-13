@@ -26,18 +26,14 @@ class State:
         self.vy = vy
         self.angle = angle
 
-
     def __str__(self):
         return f'State(checkpoints, {self.checkpoint_index}, {self.x}, {self.y}, {self.vx}, {self.vy}, {self.angle})'
-
 
     def copy(self):
         return State(self.checkpoints, self.checkpoint_index, self.x, self.y, self.vx, self.vy, self.angle)
 
-
     def next_checkpoint(self):
         return self.checkpoints[self.checkpoint_index % len(self.checkpoints)]
-
 
     def simulate(self, move: Move):
         desired_angle = 180 * math.atan2(move.y - self.y, move.x - self.x) / math.pi
