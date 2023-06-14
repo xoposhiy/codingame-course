@@ -35,22 +35,21 @@ class HeuristicTests(unittest.TestCase):
 
     def test_zig_zag(self):
         chs = [(1000, 1000), (15000, 8000), (1000, 8000), (15000, 5000)]
-        s = State(chs, 0, 1000, 1000, 0, 0, 0, [], [])
+        state = State(chs, 0, 1000, 1000, 0, 0, 0, [], [])
         turn_number = 0
         laps_number = 1
 
-        if (Visualize):
+        if Visualize:
             app = QApplication([])
-            visualizer = Visualizer(app, s, heuristic, laps_number=laps_number, heuristic_number=1)
+            visualizer = Visualizer(app, state, heuristic, laps_number=laps_number)
             visualizer.setWindowTitle("test_zig_zag")
             visualizer.show()
-            # visualizer.drawAllGame()
             app.exec()
         else:
             while turn_number < 600:
-                s.simulate_move(parse_move(heuristic(s.next_checkpoint())))
+                state.simulate_move(parse_move(heuristic(state.next_checkpoint())))
                 turn_number += 1
-            self.assertGreaterEqual(s.checkpoint_index, len(s.checkpoints) * laps_number)
+            self.assertGreaterEqual(state.checkpoint_index, len(state.checkpoints) * laps_number)
 
     def test_half_round_and_round(self):
         chs = [(12000, 1000), (12500, 2500), (12500, 5500), (12000, 7000)]

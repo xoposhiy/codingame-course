@@ -1,5 +1,5 @@
 <?xml-model href="../ulearn.xsd"?>
-<slide.exercise id="530c767f-0434-4842-b4a5-a5847bdeb9e0" title="Гонщик на эвристиках 4" xmlns="https://ulearn.me/schema/v2">
+<slide.exercise id="530c767f-0434-4842-b4a5-a5847bdeb9e0" title="Эффективный разворот" xmlns="https://ulearn.me/schema/v2">
   <scoring group="code" passedTestsScore="2"/>
   <markdown>
     Гонщик на эвристиках 4

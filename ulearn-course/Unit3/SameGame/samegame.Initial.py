@@ -84,6 +84,7 @@ class State:
         """
         pass
 
+
 def estimate(state: State) -> float:
     """
     Задание 4
@@ -91,10 +92,13 @@ def estimate(state: State) -> float:
     """
     pass
 
+
 def greedy_ai(state: State, estimate_state) -> 'Optional[list[tuple[int, int]]]':
     """
     Задание 5
-    Среди всех доступных ходов выбирает тот, после применения которого, estimate_state дает максимальное значение.
+    Среди всех доступных ходов выбирает тот, после применения которого,
+        estimate_state дает максимальное значение.
+
     Возвращает ход или None, если ходов нет.
     """
     pass

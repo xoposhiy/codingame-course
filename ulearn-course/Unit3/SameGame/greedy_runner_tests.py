@@ -2,6 +2,7 @@ import unittest
 from samegame import *
 
 
+# noinspection PyMethodMayBeStatic
 class GreedyTests(unittest.TestCase):
     def test_1(self):
         state = read_state_from([
@@ -23,7 +24,7 @@ class GreedyTests(unittest.TestCase):
             state = state.apply_move(m)
         assert state.score == 2
 
-    def test_3(self):
+    def test_medium_field(self):
         state = read_state_from([
             '2 1 1 4 1',
             '1 2 1 4 1',

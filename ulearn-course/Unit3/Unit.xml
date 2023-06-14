@@ -1,5 +1,5 @@
 <?xml-model href="../ulearn.xsd"?>
-<unit xmlns="https://ulearn.me/schema/v2" title="SameGame" id="52e11039-8904-4a61-84c5-d0ff32ae13ae" url="SameGame">
+<unit xmlns="https://ulearn.me/schema/v2" title="Same Game" id="52e11039-8904-4a61-84c5-d0ff32ae13ae" url="SameGame">
   <slides>
     <add>S*.xml</add>
   </slides>

@@ -1,5 +1,5 @@
 <?xml-model href="../ulearn.xsd"?>
-<unit xmlns="https://ulearn.me/schema/v2" title="SearchRace" id="417ee4a5-70b7-41a9-a042-657e14cdbb12" url="SearchRace">
+<unit xmlns="https://ulearn.me/schema/v2" title="Search Race" id="417ee4a5-70b7-41a9-a042-657e14cdbb12" url="SearchRace">
   <slides>
     <add>S*.xml</add>
   </slides>

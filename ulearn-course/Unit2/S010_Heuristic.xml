@@ -1,5 +1,5 @@
 <?xml-model href="../ulearn.xsd"?>
-<slide.exercise id="ce8d0185-5ee3-4b61-9d6b-ec81de09513e" title="Гонщик на эвристиках" xmlns="https://ulearn.me/schema/v2">
+<slide.exercise id="ce8d0185-5ee3-4b61-9d6b-ec81de09513e" title="Первое движение" xmlns="https://ulearn.me/schema/v2">
   <scoring group="code" passedTestsScore="2"/>
   <markdown>
     Гонщик на эвристиках

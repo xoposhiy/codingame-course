@@ -11,4 +11,5 @@ def estimate_state(state: State) -> float:
     Чем больше checkpoint_index, тем лучше
     Чем ближе следующий чекпоинт, тем луче
     """
+
     pass

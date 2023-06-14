@@ -1,5 +1,5 @@
 <?xml-model href="../ulearn.xsd"?>
-<slide.exercise id="5e4a1b01-6c6e-4cf6-9a01-05f0ed8f83e0" title="Гонщик на эвристиках 2" xmlns="https://ulearn.me/schema/v2">
+<slide.exercise id="5e4a1b01-6c6e-4cf6-9a01-05f0ed8f83e0" title="Улучшение контроля" xmlns="https://ulearn.me/schema/v2">
   <scoring group="code" passedTestsScore="2"/>
   <markdown>
     Гонщик на эвристиках 2
